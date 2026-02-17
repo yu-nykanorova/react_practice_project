@@ -4,8 +4,10 @@ import MyComponent  from "./components/MyComponent.tsx";
 function App() {
   return (
       <>
-        <MyComponent text={"Hello, my dear!"}/>
-        {MyComponent({text: "Hello again!"})}
+        <MyComponent title={"Hello, my dear!"}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum laudantium magni odio reprehenderit repudiandae veniam!
+        </MyComponent>
+        <MyComponent title={"Hello again!"}/>
       </>
   )
 }
