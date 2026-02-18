@@ -1,10 +1,11 @@
-import './App.css'
+import './App.css';
+import FamilyComponent from "./components/FamilyComponent.tsx";
 
 function App() {
 
   return (
-    <div className="bg-amber-200">
-      Hello!
+    <div className="m-h-screen bg-amber-100 flex justify-center">
+      <FamilyComponent />
     </div>
   );
 }
