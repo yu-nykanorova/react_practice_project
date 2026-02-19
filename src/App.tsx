@@ -1,10 +1,11 @@
 import './App.css'
+import {CourseList} from "./components/course-list/CourseList.tsx";
 
 function App() {
 
   return (
-    <div className="bg-amber-200">
-      Hello!
+    <div className="p-8 bg-gray-100">
+      <CourseList/>
     </div>
   );
 }
