@@ -1,5 +1,5 @@
-import {simpsons} from "../data/simpsons.ts";
-import CharacterComponent from "./CharacterComponent.tsx";
+import {simpsons} from "../../data/simpsons.ts";
+import CharacterComponent from "../character-component/CharacterComponent.tsx";
 
 const FamilyComponent = () => {
     return (
