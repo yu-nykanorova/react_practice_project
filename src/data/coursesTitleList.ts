@@ -1,6 +1,4 @@
-import type {CourseTitleType} from "../models/CourseTitle.ts";
-
-export const coursesTitleArray: CourseTitleType[] = [
+export const coursesTitleArray: string[] = [
     "JavaScript Complex",
     "Java Complex",
     "Python Complex",

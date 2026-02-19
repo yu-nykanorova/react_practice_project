@@ -1,8 +1,7 @@
 import type {FC} from 'react';
-import type {CourseTitleType} from "../../models/CourseTitle.ts";
 
 type Props = {
-    title: CourseTitleType;
+    title: string;
 }
 
 const CourseTitle: FC<Props> = ({title}) => {
