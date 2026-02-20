@@ -11,7 +11,12 @@ export const TodoComponent: FC<TodoComponentProps> = ({todo}) => {
             <p className="text-2xl text-blue-700">Todo {todo.id}</p>
             <p className="text-xl text-red-800">User #{todo.userId}</p>
             <h2 className="text-lg text">{(todo.title[0]).toUpperCase() + (todo.title).slice(1)}</h2>
-            <p>{todo.completed}</p>
+            {
+                todo.completed ?
+                    <p>Status: done</p>
+                :
+                    <p>Status: active</p>
+            }
         </li>
     );
 };

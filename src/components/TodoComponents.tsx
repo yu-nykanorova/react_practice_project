@@ -8,7 +8,6 @@ export const TodoComponents = () => {
 
     useEffect(() => {
         getTodos().then(data => setTodoList(data));
-        console.log(todoList);
     }, []);
 
     return (
