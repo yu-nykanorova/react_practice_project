@@ -11,7 +11,7 @@ export const UsersList = () => {
         getUsers().then(data => setUsers(data));
     }, []);
 
-    const foo = (item: User): void => {
+    const showUserInfo = (item: User): void => {
         setItem(item);
     }
 
@@ -20,7 +20,7 @@ export const UsersList = () => {
             <ul className="mb-8 flex flex-col gap-2">
                 {
                     users.map((user) => (
-                        <UserItem foo={foo} key={user.id} user={user}/>
+                        <UserItem showUserInfo={showUserInfo} key={user.id} user={user}/>
                     ))
                 }
             </ul>
