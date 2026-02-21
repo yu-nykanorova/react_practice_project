@@ -8,6 +8,14 @@ export const UsersList = () => {
 
     useEffect(() => {
         getUsers().then(data => setUsers(data));
+
+        // async function fetchUsers() {
+        //     const allUsers = await getUsers();
+        //     setUsers(allUsers);
+        // }
+        //
+        // fetchUsers();
+
     }, []);
 
     return (
