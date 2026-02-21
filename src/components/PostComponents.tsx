@@ -7,7 +7,11 @@ export const PostComponents = () => {
     const [postList, setPostList] = useState<IPost[]>([]);
 
     useEffect(() => {
-        getPosts().then(data => setPostList(data));
+        async function fetchData() {
+            const postsObj = await getPosts();
+            setPostList(postsObj.posts);
+        }
+        fetchData();
     },[]);
 
     return (

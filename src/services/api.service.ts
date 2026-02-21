@@ -1,6 +1,6 @@
-import type {IPost} from "../models/postModel.ts";
+import type {IPostsObjModel} from "../models/postModel.ts";
 
-export const getPosts = async (): Promise<IPost[]> => {
-    return await fetch(import.meta.env.VITE_API_URL + "/posts")
-                    .then(res => res.json());
+export const getPosts = async (): Promise<IPostsObjModel> => {
+    const res = await fetch(import.meta.env.VITE_API_URL + "/posts");
+    return res.json();
 }
