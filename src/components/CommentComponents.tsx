@@ -7,7 +7,11 @@ export const CommentComponents = () => {
     const [comments, setComments] = useState<IComment[]>([]);
 
     useEffect(() => {
-        getComments().then(data => setComments(data));
+        async function fetchData() {
+            const commentsObj = await getComments();
+            setComments(commentsObj.comments);
+        }
+        fetchData();
     }, []);
 
     return (
