@@ -7,7 +7,11 @@ export const TodoComponents = () => {
     const [todoList, setTodoList] = useState<ITodo[]>([]);
 
     useEffect(() => {
-        getTodos().then(data => setTodoList(data));
+        async function fetchData(){
+            const todosObj = await getTodos();
+            setTodoList(todosObj.todos);
+        }
+        fetchData();
     }, []);
 
     return (
