@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-## Homework 2, task #ohm4AivCEBv
+## Homework 2, task #x7sQQ3cJ3
 https://jsonplaceholder.typicode.com/posts – look at the data array.
 Create the necessary models and components and display all information about every array object.
 Add minimal styling.
