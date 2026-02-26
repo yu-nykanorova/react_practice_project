@@ -1,10 +1,33 @@
 # React + TypeScript + Vite
 
-## About this repository
+## Homework 3, task #chszHaH9
+Build a menu with the ability to navigate to the following pages:   
+/users  
+/posts  
+/comments   
+/products   
+There is no content on the pages. Only competent processing of routes in two variants (router object and browser router (optional, but recommended)).
 
-This repository is a base React project for course assignments.
-Each homework is implemented in a separate branch.
+## Technologies
+- React + Vite
+- React Router DOM
+- TailwindCSS
 
-To view a specific task, switch to the corresponding branch.
-
-Detailed instructions for running and working with each homework are provided in the README file inside each branch.
+## Getting started
+1) Clone the repository
+```bash
+git clone <repository-url>
+```
+2) Go to the project folder
+```bash
+cd <project-folder>
+```
+3) Install dependencies
+```bash
+npm install
+```
+4) Run project
+```bash
+npm run dev
+```
+The project will be available at: http://localhost:5173
