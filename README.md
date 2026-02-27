@@ -1,18 +1,19 @@
 # React + TypeScript + Vite
 
-## Homework 3, task #qL0b5uh
+## Homework 3, task #Uyj2GjyDDF
 Build a menu with the ability to navigate to the following routes:   
-/users/jsonplaceholder  
-/users/dummyjson  
-/posts/jsonplaceholder  
-/posts/dummyjson  
-/comments/jsonplaceholder   
-/comments/dummyjson
-There is no content on the pages. Only competent processing of routes.
+/users/jsonplaceholder - display all objects from https://jsonplaceholder.typicode.com/users
+/users/dummyjson - display all objects from https://dummyjson.com/users
+/posts/jsonplaceholder - display all objects from https://jsonplaceholder.typicode.com/posts
+/posts/dummyjson - display all objects from https://dummyjson.com/posts
+/comments/jsonplaceholder - display all objects from https://jsonplaceholder.typicode.com/comments
+/comments/dummyjson - display all objects from https://dummyjson.com/comments
 
 ## Technologies
 - React + Vite
 - React Router DOM
+- Typescript
+- Fetch API
 - TailwindCSS
 
 ## Getting started
