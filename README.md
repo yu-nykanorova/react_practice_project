@@ -1,12 +1,14 @@
 # React + TypeScript + Vite
 
-## Homework 3, task #chszHaH9
-Build a menu with the ability to navigate to the following pages:   
-/users  
-/posts  
-/comments   
-/products   
-There is no content on the pages. Only competent processing of routes in two variants (router object and browser router (optional, but recommended)).
+## Homework 3, task #qL0b5uh
+Build a menu with the ability to navigate to the following routes:   
+/users/jsonplaceholder  
+/users/dummyjson  
+/posts/jsonplaceholder  
+/posts/dummyjson  
+/comments/jsonplaceholder   
+/comments/dummyjson
+There is no content on the pages. Only competent processing of routes.
 
 ## Technologies
 - React + Vite
