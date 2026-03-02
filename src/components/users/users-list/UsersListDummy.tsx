@@ -15,12 +15,12 @@ export const UsersListDummy = () => {
     }, []);
 
     return (
-        <>
+        <ul>
             {
-                users.map((user, index) => (
-                    <p key={index}>{user.eyeColor}</p>
+                users.map((user) => (
+                    <p key={user.id}>{user.eyeColor}</p>
                 ))
             }
-        </>
+        </ul>
     );
 };

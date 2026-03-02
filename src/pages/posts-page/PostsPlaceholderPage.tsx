@@ -1,5 +1,7 @@
+import {PostsListPlaceholder} from "../../components/posts/posts-list/PostsListPlaceholder.tsx";
+
 export const PostsPlaceholderPage = () => {
     return (
-        <>Posts list from JSONplaceholder</>
+        <><PostsListPlaceholder/></>
     );
 };

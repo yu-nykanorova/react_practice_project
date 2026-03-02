@@ -3,7 +3,7 @@ import type {Source} from "../models/Source.ts";
 
 export const itemsService = {
     getAll: async <T>(source: Source, category: string): Promise<T> => {
-        return await fetch(urls.allItems(source, category))
-            .then(res => res.json());
+        const result = await fetch(urls.allItems(source, category));
+        return await result.json();
     }
 }

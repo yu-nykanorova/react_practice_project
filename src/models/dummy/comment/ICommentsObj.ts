@@ -1,7 +1,7 @@
 import type {ICommentDummy} from "./ICommentDummy.ts";
 
 export interface ICommentsObj {
-    users: ICommentDummy[];
+    comments: ICommentDummy[];
     total: number;
     skip: number;
     limit: number;

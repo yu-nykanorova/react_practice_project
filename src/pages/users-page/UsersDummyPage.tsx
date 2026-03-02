@@ -1,4 +1,4 @@
-import {UsersListDummy} from "../../components/dummy/users-list/UsersListDummy.tsx";
+import {UsersListDummy} from "../../components/users/users-list/UsersListDummy.tsx";
 
 export const UsersDummyPage = () => {
     return (

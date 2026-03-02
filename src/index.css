@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.grid-2-list {
+    @apply grid grid-cols-2 gap-4;
+}
