@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import type {ICommentDummy} from "../../../models/dummy/comment/ICommentDummy.ts";
 import {itemsService} from "../../../services/api.service.ts";
 import type {ICommentsObj} from "../../../models/dummy/comment/ICommentsObj.ts";
+import {CommentItemDummy} from "../comment-item/CommentItemDummy.tsx";
 
 export const CommentsListDummy = () => {
     const [comments, setComments] = useState<ICommentDummy[]>([]);
@@ -15,12 +16,10 @@ export const CommentsListDummy = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className="max-width grid grid-cols-1 gap-8">
             {
                 comments.map((comment) => (
-                    <div key={comment.id}>
-                        {comment.body}
-                    </div>
+                    <CommentItemDummy key={comment.id} comment={comment}/>
                 ))
             }
         </ul>

@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import type {IUserDummy} from "../../../models/dummy/user/IUserDummy.ts";
 import {itemsService} from "../../../services/api.service.ts";
 import type {IUsersObj} from "../../../models/dummy/user/IUsersObj.ts";
+import {UserItemDummy} from "../user-item/UserItemDummy.tsx";
 
 export const UsersListDummy = () => {
     const [users, setUsers] = useState<IUserDummy[]>([]);
@@ -15,10 +16,10 @@ export const UsersListDummy = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className="max-width grid grid-cols-1 gap-8">
             {
                 users.map((user) => (
-                    <p key={user.id}>{user.eyeColor}</p>
+                    <UserItemDummy key={user.id} user={user}/>
                 ))
             }
         </ul>

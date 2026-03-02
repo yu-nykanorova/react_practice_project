@@ -15,7 +15,7 @@ export const UsersListPlaceholder = () => {
     }, []);
 
     return (
-        <ul className="grid-2-list">
+        <ul className="max-width grid-2-list">
             {
                 users.map((user) => (
                     <UserItemPlaceholder key={user.id} user={user}/>

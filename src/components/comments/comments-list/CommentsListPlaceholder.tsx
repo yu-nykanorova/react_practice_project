@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import type {ICommentPlaceholder} from "../../../models/placeholder/comment/ICommentPlaceholder.ts";
 import {itemsService} from "../../../services/api.service.ts";
+import {CommentItemPlaceholder} from "../comment-item/CommentItemPlaceholder.tsx";
 
 export const CommentsListPlaceholder = () => {
     const [comments, setComments] = useState<ICommentPlaceholder[]>([]);
@@ -14,14 +15,10 @@ export const CommentsListPlaceholder = () => {
     }, []);
 
     return (
-        <ul>
+        <ul className="max-width grid grid-cols-1 gap-8">
             {
                 comments.map((comment) => (
-                    <div key={comment.id}>
-                        {
-                            comment.body
-                        }
-                    </div>
+                    <CommentItemPlaceholder key={comment.id} comment={comment}/>
                 ))
             }
         </ul>

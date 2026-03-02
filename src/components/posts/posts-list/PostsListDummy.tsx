@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import type {IPostDummy} from "../../../models/dummy/post/IPostDummy.ts";
 import {itemsService} from "../../../services/api.service.ts";
 import type {IPostsObj} from "../../../models/dummy/post/IPostsObj.ts";
+import {PostItemDummy} from "../post-item/PostItemDummy.tsx";
 
 export const PostsListDummy = () => {
     const [posts, setPosts] = useState<IPostDummy[]>([]);
@@ -15,10 +16,10 @@ export const PostsListDummy = () => {
     }, [])
 
     return (
-        <ul>
+        <ul className="max-width grid-2-list">
             {
                 posts.map((post) => (
-                    <div key={post.id}>{post.title}</div>
+                    <PostItemDummy key={post.id} post={post}/>
                 ))
             }
         </ul>
