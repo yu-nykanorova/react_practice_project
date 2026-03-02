@@ -1,16 +1,18 @@
 # React + TypeScript + Vite
 
-## Homework 3, task #chszHaH9
-Build a menu with the ability to navigate to the following pages:   
-/users  
-/posts  
-/comments   
-/products   
-There is no content on the pages. Only competent processing of routes in two variants (router object and browser router (optional, but recommended)).
+## Homework 3, task #tntlwuxFxI5
+Routing.
+There are the following pages:
+- UsersPage – renders users from the dummyjson.com api (arbitrary markup and amount of object info);
+- PostsPage – renders posts from the dummyjson.com api (arbitrary markup and amount of object info).
+
+Display only the first returned pool of objects (as much as the API returns, without pagination and without paying attention to the remainder).
 
 ## Technologies
 - React + Vite
 - React Router DOM
+- Typescript
+- Fetch API
 - TailwindCSS
 
 ## Getting started
