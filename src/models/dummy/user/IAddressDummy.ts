@@ -1,4 +1,4 @@
-import type {IGeoDummy} from "./IUserDummy.ts";
+import type {IGeoDummy} from "./IGeoDummy.ts";
 
 export interface IAddressDummy {
     address: string;
