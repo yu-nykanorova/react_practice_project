@@ -16,7 +16,8 @@ export const UsersList = () => {
 
     return (
         <>
-            <ul className="p-2 flex-[0_0_50%] mx-auto grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2 overflow-y-auto">
+            <h1 className="mb-6 text-xl text-white">Users List</h1>
+            <ul className="p-2 mx-auto grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-3">
                 {
                     users.map((user) => (
                         <UserItem key={user.id} user={user}/>

@@ -3,7 +3,7 @@
 ## Homework 3, task #z5PFSTAK
 
 On the main page, display all users from any API (dummyjson.com or jsonplaceholder.typicode.com).
-When clicking on a specific user, display their shopping carts without replacing the parent component (next to the user list).
+When clicking on a specific user, display their shopping carts, replacing the parent component with a list of shopping carts.
 
 ## Technologies
 - React + Vite

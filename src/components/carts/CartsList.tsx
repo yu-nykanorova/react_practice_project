@@ -10,10 +10,11 @@ export const CartsList = () => {
     const {userId} = useParams();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         if (!userId) {
             return;
         }
-
 
         const id = Number(userId);
 
@@ -28,20 +29,23 @@ export const CartsList = () => {
     }, [userId]);
 
     if (loading) {
-        return <div className="w-full p-2 flex-[0_0_45%] text-xl text-red-800">Loading...</div>;
+        return <div className="w-full mt-16 p-2 flex-[0_0_45%] text-xl text-red-200 font-semibold">Loading...</div>;
     }
 
     if (!loading && carts.length === 0) {
-        return <div className="w-full p-2 flex-[0_0_45%] text-xl text-amber-600">User {userId} doesn't have any carts yet</div>;
+        return <div className="w-full mt-16 p-2 flex-[0_0_45%] text-2xl text-amber-200">User {userId} doesn't have any carts yet</div>;
     }
 
     return (
-        <ul className="w-full p-2 flex flex-col gap-2 overflow-y-auto">
-            {
-                carts.map((cart) => (
-                    <CartItem key={cart.id} cart={cart}/>
-                ))
-            }
-        </ul>
+        <div>
+            <h1 className="mb-6 text-xl text-white">Carts List of User {userId}</h1>
+            <ul className="max-w-3/5 mx-auto p-2 flex flex-col gap-6 overflow-y-auto">
+                {
+                    carts.map((cart) => (
+                        <CartItem key={cart.id} cart={cart}/>
+                    ))
+                }
+            </ul>
+        </div>
     );
 };

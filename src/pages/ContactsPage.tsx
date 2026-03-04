@@ -1,5 +1,5 @@
 export const ContactsPage = () => {
     return (
-        <>Contacts page is under construction</>
+        <p className="mt-16 text-rose-200">Contacts page is under construction</p>
     );
 };

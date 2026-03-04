@@ -5,7 +5,7 @@ export const Layout = () => {
     return (
         <div className="relative">
             <Menu/>
-            <div className="min-h-screen pt-20 text-center text-3xl text-gray-950 bg-gray-200">
+            <div className="min-h-screen pt-20 text-center text-3xl text-gray-950 bg-gray-500">
                 <Outlet/>
             </div>
         </div>

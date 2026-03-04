@@ -4,6 +4,7 @@ import {Layout} from "../layouts/Layout.tsx";
 import {AboutPage} from "../pages/AboutPage.tsx";
 import {ContactsPage} from "../pages/ContactsPage.tsx";
 import {CartsList} from "../components/carts/CartsList.tsx";
+import {UsersList} from "../components/users/UsersList.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <div className="p-2 flex-[0_0_45%] text-red-800 text-xl">Click user to show carts list</div>
+                        element: <UsersList/>
                     },
                     {
                         path: "carts/:userId",
