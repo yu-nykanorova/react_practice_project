@@ -5,7 +5,7 @@ export const MainLayout = () => {
     return (
         <div className="relative bg-gray-500">
             <Menu/>
-            <div className="max-w-300 mx-auto min-h-screen pt-20 pb-10 text-center text-3xl text-white">
+            <div className="max-w-200 mx-auto min-h-screen pt-20 pb-10 text-center text-3xl text-white">
                 <Outlet/>
             </div>
         </div>

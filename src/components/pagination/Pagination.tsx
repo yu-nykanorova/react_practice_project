@@ -1,25 +1,39 @@
 import {useSearchParams} from "react-router-dom";
 
-export const Pagination = () => {
-    const [query, setQuery] = useSearchParams({limit: "10", skip: "0"});
+export const Pagination = ({total}: {total: number}) => {
+    const [query, setQuery] = useSearchParams({page: "1"});
 
-    const limit = Number(query.get("limit")) || 10;
-    const skip = Number(query.get("skip")) || 0;
+    let currentPage = Number(query.get("page")) || 1;
+    const limit = 10;
+    const totalPages = Math.ceil(total / limit);
 
     const handleClickPrev = () => {
-        const currentPage = skip - limit;
-        setQuery({limit: limit.toString(), skip: currentPage.toString()});
+        if (currentPage > 1) {
+            setQuery({page: (--currentPage).toString()});
+        }
     }
 
     const handleClickNext = () => {
-        const currentPage = skip + limit;
-        setQuery({limit: limit.toString(), skip: currentPage.toString()});
+        setQuery({page: (++currentPage).toString()});
     }
 
     return (
-        <div className="max-w-100 mx-auto mt-8 flex justify-center items-center gap-6">
-            <button className="px-3 py-1 text-2xl text-slate-800 bg-sky-50 border-2 border-sky-800 rounded-md shadow-xl hover:bg-sky-200" onClick={handleClickPrev}>Prev</button>
-            <button className="px-3 py-1 text-2xl text-slate-800 bg-sky-50 border-2 border-sky-800 rounded-md shadow-xl hover:bg-sky-200" onClick={handleClickNext}>Next</button>
+        <div className="max-w-100 mx-auto mt-8 flex justify-center gap-6">
+            <button
+                className="px-3 py-1 flex items-center justify-center text-xl text-slate-800 bg-sky-50 border-2 border-sky-800 rounded-md shadow-xl enabled:hover:bg-sky-800 enabled:hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+                onClick={handleClickPrev}
+                disabled={currentPage === 1}
+            >
+                Prev
+            </button>
+            <div className="px-3 py-1 flex items-center justify-center text-[18px] text-sky-700 bg-sky-50 border-2 border-sky-800 rounded-md">{currentPage} / {totalPages}</div>
+            <button
+                className="px-3 py-1 flex items-center justify-center text-xl text-slate-800 bg-sky-50 border-2 border-sky-800 rounded-md shadow-xl enabled:hover:bg-sky-800 enabled:hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+                onClick={handleClickNext}
+                disabled={currentPage === totalPages}
+            >
+                Next
+            </button>
         </div>
     );
 };
