@@ -39,9 +39,9 @@ export const FormComponent = () =>
     return (
         <div className="flex flex-col items-center justify-center">
             <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-                <input className="bg-sky-50" type="text" name={"username"} value={formState.username} onChange={handleInputChange}/>
-                <input className="bg-sky-50" type="text" name={"password"} value={formState.password} onChange={handleInputChange}/>
-                <button className="bg-sky-200">Send</button>
+                <input className="bg-white" type="text" name={"username"} value={formState.username} onChange={handleInputChange}/>
+                <input className="bg-white" type="text" name={"password"} value={formState.password} onChange={handleInputChange}/>
+                <button className="bg-sky-400">Send</button>
             </form>
         </div>
     );
