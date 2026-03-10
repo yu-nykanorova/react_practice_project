@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 
 export const MainMenu = () => {
     const menuItemClass = ({isActive}: {isActive: boolean}) =>
-        `p-1 text-xl ${isActive ? "font-semibold text-orange-400 border-b border-b-orange-400" : ""}`;
+        `p-1 text-xl ${isActive ? "font-semibold text-orange-500 border-b border-b-orange-400" : ""}`;
 
     return (
         <div className="w-screen fixed bg-slate-300 shadow-lg z-10">

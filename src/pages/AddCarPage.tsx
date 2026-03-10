@@ -1,5 +1,9 @@
+import {AddCarForm} from "../components/form/AddCarForm.tsx";
+
 export const AddCarPage = () => {
     return (
-        <>Add new car</>
+        <>
+            <AddCarForm/>
+        </>
     );
 };
