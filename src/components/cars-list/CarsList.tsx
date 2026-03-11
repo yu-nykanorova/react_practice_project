@@ -10,6 +10,8 @@ export const CarsList = () => {
         carsService.getAllCars().then(data => setCars(data));
     }, []);
 
+    console.log(cars.length);
+
     return (
         <div>
             <h1 className="mb-6 text-2xl text-center">Cars List</h1>
