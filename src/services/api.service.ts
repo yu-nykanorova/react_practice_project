@@ -1,6 +1,5 @@
 import axios from "axios";
 import type {IUserWithTokens} from "../models/IUserWithTokens.ts";
-import type {IProduct, IProductsObjModel} from "../models/IProduct.ts";
 import {retrieveLocalStorage} from "./helpers.ts";
 import type {ITokenPair} from "../models/ITokenPair.ts";
 
@@ -41,7 +40,7 @@ export const refresh = async () => {
     localStorage.setItem("user", JSON.stringify(userWithTokens));
 }
 
-export const loadAuthProducts = async (): Promise<IProduct[]> => {
-    const {data} = await axiosInstance.get<IProductsObjModel>("/products", {});
-    return data.products;
+export const loadAuthResource = async <T>(url: string, resource: string): Promise<T[]> => {
+    const {data} = await axiosInstance.get(url, {});
+    return data[resource];
 }

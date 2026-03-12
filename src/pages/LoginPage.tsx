@@ -12,7 +12,7 @@ export const LoginPage = () => {
 
     return (
         <>
-            Login page
+            <h1 className="my-8 text-[30px] text-center text-pink-800">You have successfully logged in</h1>
         </>
     );
 };
