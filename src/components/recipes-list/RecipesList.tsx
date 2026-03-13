@@ -7,13 +7,24 @@ export const RecipesList = () => {
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
 
     useEffect(() => {
+
+        // виклик універсальної функції для завантаження даних про рецепти із захищеного ресурсу
+        // <IRecipesObjModel> - зазначення типу даних, які очікуються від api
+        // /recipes - ендпоінт, на який відправляється GET запит
         loadAuthResource<IRecipesObjModel>("/recipes")
+            // у разі успішності запиту
             .then(data => {
+                // масив рецептів зберігається у стейт компоненту
                 setRecipes(data.recipes);
                 console.log(data.recipes);
-            }).catch(reason => {
+            })
+            // у разі помилки (зокрема протермінування accessToken)
+            .catch(reason => {
+                // виводиться інформація про помилку у консоль
                 console.log(reason);
+                // спроба відновити accessToken за допомогою refreshToken
                 refresh()
+                    // після успішного оновлення токену відправляється повторний запит на отримання рецептів і, у разі його успішності, - запис у стейт компоненту
                     .then(() => loadAuthResource<IRecipesObjModel>("/recipes"))
                     .then(data => setRecipes(data.recipes));
             });

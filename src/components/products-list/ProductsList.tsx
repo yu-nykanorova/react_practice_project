@@ -7,13 +7,24 @@ export const ProductsList = () => {
     const [products, setProducts] = useState<IProduct[]>([]);
 
     useEffect(() => {
+
+        // виклик універсальної функції для завантаження даних про продукти із захищеного ресурсу
+        // <IProductsObjModel> - зазначення типу даних, які очікуються від api
+        // /products - ендпоінт, на який відправляється GET запит
         loadAuthResource<IProductsObjModel>("/products")
+            // у разі успішності запиту
             .then(data => {
+                // масив продуктів зберігається у стейт компоненту
                 setProducts(data.products);
                 console.log(data.products);
-            }).catch(reason => {
+            })
+            // у разі помилки (зокрема протермінування accessToken)
+            .catch(reason => {
+                // виводиться інформація про помилку у консоль
                 console.log(reason);
+                // спроба відновити accessToken за допомогою refreshToken
                 refresh()
+                    // після успішного оновлення токену відправляється повторний запит на отримання продуктів і, у разі його успішності, - запис у стейт компоненту
                     .then(() => loadAuthResource<IProductsObjModel>("/products"))
                     .then(data => setProducts(data.products));
             });

@@ -3,7 +3,8 @@ import type {IUserWithTokens} from "../models/IUserWithTokens.ts";
 import {retrieveLocalStorage} from "./helpers.ts";
 import type {ITokenPair} from "../models/ITokenPair.ts";
 
-// Тип даних для відправки під час логіну
+// тип даних, які відправляються під час логіну
+
 type LoginData = {
   username: string;
   password: string;
@@ -11,16 +12,18 @@ type LoginData = {
 };
 
 // створення екземпляру axios з базовими налаштуваннями
+
 export const axiosInstance = axios.create({
-    baseURL: 'https://dummyjson.com/auth', // базовий url
+    baseURL: 'https://dummyjson.com/auth', // базовий url api
     headers: {}
 });
 
 // додавання перехоплювача - функції, яка буде виконуватись перед запитом HTTP
+
 axiosInstance.interceptors.request.use((requestObject) => {
     // перевірка чи відповідає метод запиту GET
     if(requestObject.method?.toUpperCase() === "GET") {
-        // додавання до заголовку "Authorization" токену accessToken, який за допомогою імпортованої функції retrieveLocalStorage отримується зі сховища LocalStorage
+        // додавання до заголовку "Authorization" токену accessToken, який отримується зі сховища LocalStorage за допомогою імпортованої з файлу helpers.ts функції retrieveLocalStorage
         requestObject.headers.Authorization = `Bearer ${retrieveLocalStorage<IUserWithTokens>("user").accessToken}`;
     }
     // повернення модифікованого об'єкту запиту
@@ -28,6 +31,7 @@ axiosInstance.interceptors.request.use((requestObject) => {
 })
 
 // функція для логіну користувача
+
 export const login = async ({username, password, expiresInMins}: LoginData): Promise<void> => {
     // відправка post запиту на адресу /login
     const {data: userWithTokens} = await axiosInstance.post<IUserWithTokens>("/login", {username, password, expiresInMins});
@@ -40,6 +44,7 @@ export const login = async ({username, password, expiresInMins}: LoginData): Pro
 };
 
 // функція оновлення accessToken за допомогою refreshToken
+
 export const refresh = async () => {
     // отримання користувача з токенами зі сховища LocalStorage за допомогою імпортованої функції retrieveLocalStorage
     const userWithTokens = retrieveLocalStorage<IUserWithTokens>("user");
@@ -64,6 +69,6 @@ export const loadAuthResource = async <T>(url: string): Promise<T> => {
     // виконання GET запиту на переданий url
     const {data} = await axiosInstance.get(url, {});
 
-    // повернення об'єкту
+    // повернення об'єкту з даними
     return data;
 }
