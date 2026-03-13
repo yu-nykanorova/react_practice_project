@@ -32,7 +32,7 @@ export const RecipesList = () => {
 
     return (
         <>
-            <h1 className="my-8 text-[30px] text-center">Products List</h1>
+            <h1 className="my-8 text-[30px] text-center">Recipes List</h1>
             <ul className="grid grid-cols-2 gap-4">
                 {
                     recipes.map((recipe) => (
