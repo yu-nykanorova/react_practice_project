@@ -59,10 +59,11 @@ export const refresh = async () => {
 }
 
 // універсальна функція завантаження ресурсів, які доступні авторизованим користувачам
-export const loadAuthResource = async <T>(url: string, resource: string): Promise<T[]> => {
+
+export const loadAuthResource = async <T>(url: string): Promise<T> => {
     // виконання GET запиту на переданий url
     const {data} = await axiosInstance.get(url, {});
 
-    // повернення масиву вказаних ресурсів
-    return data[resource];
+    // повернення об'єкту
+    return data;
 }

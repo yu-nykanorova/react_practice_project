@@ -1,23 +1,22 @@
 import {ProductItem} from "../product-item/ProductItem.tsx";
 import {useEffect, useState} from "react";
 import {loadAuthResource, refresh} from "../../services/api.service.ts";
-import type {IProduct} from "../../models/IProduct.ts";
+import type {IProduct, IProductsObjModel} from "../../models/IProduct.ts";
 
 export const ProductsList = () => {
     const [products, setProducts] = useState<IProduct[]>([]);
 
     useEffect(() => {
-        loadAuthResource<IProduct>("/products", "products")
+        loadAuthResource<IProductsObjModel>("/products")
             .then(data => {
-                setProducts(data);
-                console.log(data);
+                setProducts(data.products);
+                console.log(data.products);
             }).catch(reason => {
-            console.log(reason);
-
-            refresh()
-                .then(() => loadAuthResource<IProduct>("/products", "products"))
-                .then(data => setProducts(data));
-        });
+                console.log(reason);
+                refresh()
+                    .then(() => loadAuthResource<IProductsObjModel>("/products"))
+                    .then(data => setProducts(data.products));
+            });
     }, []);
 
     return (

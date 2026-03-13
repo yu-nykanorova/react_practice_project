@@ -1,23 +1,22 @@
 import {useEffect, useState} from "react";
 import {loadAuthResource, refresh} from "../../services/api.service.ts";
-import type {IRecipe} from "../../models/IRecipe.ts";
+import type {IRecipe, IRecipesObjModel} from "../../models/IRecipe.ts";
 import {RecipeItem} from "../recipe-item/RecipeItem.tsx";
 
 export const RecipesList = () => {
     const [recipes, setRecipes] = useState<IRecipe[]>([]);
 
     useEffect(() => {
-        loadAuthResource<IRecipe>("/recipes", "recipes")
+        loadAuthResource<IRecipesObjModel>("/recipes")
             .then(data => {
-                setRecipes(data);
-                console.log(data);
+                setRecipes(data.recipes);
+                console.log(data.recipes);
             }).catch(reason => {
-            console.log(reason);
-
-            refresh()
-                .then(() => loadAuthResource<IRecipe>("/recipes", "recipes"))
-                .then(data => setRecipes(data));
-        });
+                console.log(reason);
+                refresh()
+                    .then(() => loadAuthResource<IRecipesObjModel>("/recipes"))
+                    .then(data => setRecipes(data.recipes));
+            });
     }, []);
 
     return (
