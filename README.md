@@ -1,10 +1,38 @@
 # React + TypeScript + Vite
 
-## About this repository
+## Homework 7, task #cf69cHp
 
-This repository is a base React project for course assignments.
-Each homework is implemented in a separate branch.
+Create a custom hook that will return responses from the API and replace useState + useEffect.  
+API endpoint is the argument of custom hook.    
+Think through the logic of response typing.
 
-To view a specific task, switch to the corresponding branch.
+Example of a signature:
+useFetch\<T>(url)
 
-Detailed instructions for running and working with each homework are provided in the README file inside each branch.
+## Technologies
+- React + Vite
+- React Router DOM
+- Custom hook
+- Typescript
+- Axios
+- TailwindCSS
+
+## Getting started
+
+1) Clone the repository
+```bash
+git clone <repository-url>
+```
+2) Go to the project folder
+```bash
+cd <project-folder>
+```
+3) Install dependencies
+```bash
+npm install
+```
+4) Run project
+```bash
+npm run dev
+```
+The project will be available at: http://localhost:5173
