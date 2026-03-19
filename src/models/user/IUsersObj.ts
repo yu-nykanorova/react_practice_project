@@ -1,6 +1,6 @@
 import type {IUser} from "./IUser.ts";
 
-export interface IResponseObj {
+export interface IUsersObj {
     users: IUser[];
     total: number;
     skip: number;
