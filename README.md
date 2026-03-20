@@ -2,17 +2,14 @@
 
 ## Homework 7, task #cf69cHp
 
-Create a custom hook that will return responses from the API and replace useState + useEffect.  
-API endpoint is the argument of custom hook.    
-Think through the logic of response typing.
-
-Example of a signature:
-useFetch\<T>(url)
+Make a component tree, two-way. The deeper - the better.
+Make a context. Make a button that will change light/dark mode.
 
 ## Technologies
 - React + Vite
 - React Router DOM
 - Custom hook
+- React Context
 - Typescript
 - Axios
 - TailwindCSS

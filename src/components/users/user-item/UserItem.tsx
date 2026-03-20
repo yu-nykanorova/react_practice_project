@@ -1,13 +1,20 @@
-import type {FC} from "react";
+import {type FC, useContext} from "react";
 import type {IUser} from "../../../models/user/IUser.ts";
+import {MyContext} from "../../../context/MyContext.tsx";
 
 type UserProps = {
     user: IUser;
 }
 
 export const UserItem:FC<UserProps> = ({user}) => {
+    const {setSelectedUser} = useContext(MyContext);
+
+    const selectUser = () => {
+        setSelectedUser(user);
+    }
+
     return (
-        <li className="group p-4 bg-white rounded-md shadow-md transition-all duration-200 hover:bg-lime-200">
+        <li className="group p-4 bg-white rounded-md shadow-md cursor-pointer transition-all duration-200 hover:bg-lime-200">
             <h2 className="mb-2 text-lime-600 text-[24px] text-shadow-2xs transition-all duration-200 group-hover:text-stone-900">{user.firstName} {user.lastName}</h2>
             <p className="mb-2">ID: {user.id}</p>
             <p className="text-[18px] font-semibold">Address:</p>
@@ -15,6 +22,7 @@ export const UserItem:FC<UserProps> = ({user}) => {
             <p>{user.address.postalCode} {user.address.state}, {user.address.country}</p>
             <p className="text-[14px] font-semibold">Phone: {user.phone}</p>
             <p className="text-[14px] font-semibold">Phone: {user.email}</p>
+            <button className="mt-2 px-2 py-1 bg-lime-600 text-white rounded-md cursor-pointer" onClick={selectUser}>Show posts</button>
         </li>
     );
 };

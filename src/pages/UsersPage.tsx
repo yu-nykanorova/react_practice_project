@@ -1,9 +1,11 @@
-import {UsersList} from "../components/users/users-list/UsersList.tsx";
+import {UsersBranch} from "./UsersBranch.tsx";
+import {PostsBranch} from "./PostsBranch.tsx";
 
 export const UsersPage = () => {
     return (
-        <>
-            <UsersList/>
-        </>
+        <div className="grid grid-cols-2 gap-x-10">
+            <UsersBranch/>
+            <PostsBranch/>
+        </div>
     );
 };
