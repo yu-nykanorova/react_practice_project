@@ -37,7 +37,7 @@ export const PostsList = () => {
     }
 
     return (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-4">
+        <ul className="h-screen grid grid-cols-1 gap-4 content-start overflow-y-auto">
             {
                 data.posts.map((post) => (
                     <PostItem key={post.id} post={post}/>
