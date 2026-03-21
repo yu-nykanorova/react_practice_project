@@ -2,8 +2,10 @@ import {NavLink} from 'react-router-dom'
 import {ModeSwitcher} from "../mode-switcher/ModeSwitcher.tsx";
 
 export const MainMenu = () => {
+
     const menuItemClass = ({isActive}: {isActive: boolean}) =>
         `p-1 text-xl ${isActive ? "font-semibold text-lime-600 border-b border-b-lime-600" : ""}`;
+
 
     return (
         <nav className="max-w-300 mx-auto px-10 py-2 flex justify-between items-center">

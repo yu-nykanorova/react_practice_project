@@ -13,7 +13,7 @@ export const UsersList = () => {
     const {data, error} = useFetch<IUsersObj>("/users", defaultUsers);
 
     return (
-        <ul className="h-screen grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6 overflow-y-auto">
+        <ul className="h-screen pr-4 grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6 overflow-y-auto">
             {
                 error ?
                     <p>{error}</p>

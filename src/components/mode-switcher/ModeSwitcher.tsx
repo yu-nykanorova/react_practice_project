@@ -11,6 +11,10 @@ export const ModeSwitcher = () => {
     }
 
     return (
-        <button className={`px-4 py-2 rounded-md ${themeClass}`} onClick={handleToggleTheme}>Theme</button>
+        <button className={`px-4 py-2 rounded-md ${themeClass}`} onClick={handleToggleTheme}>
+            {
+                theme === "dark" ? "Turn light" : "Turn dark"
+            }
+        </button>
     );
 };
