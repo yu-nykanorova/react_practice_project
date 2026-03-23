@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {userSliceActions} from "../redux/slices/userSlice/userSlice.ts";
 import {useAppSelector} from "../redux/hooks/useAppSelector.tsx";
 import {useAppDispatch} from "../redux/hooks/useAppDispatch.tsx";
+import {Link} from "react-router-dom";
 
 export const UsersPage = () => {
     const {users, loadState} = useAppSelector(({userSlice}) => userSlice);
@@ -18,7 +19,7 @@ export const UsersPage = () => {
 
             {
                 users.map((user) => (
-                    <li key={user.id}>{user.name}</li>
+                    <Link className="block" to={`/users/${user.id}`} key={user.id}>{user.name}</Link>
                 ))
             }
         </ul>
