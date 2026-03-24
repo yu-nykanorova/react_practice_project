@@ -20,7 +20,7 @@ const loadUsers = createAsyncThunk(
             const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
             if (!res.ok) {
-                throw new Error(`Failed to fetch`);
+                throw new Error("Failed to fetch");
             }
 
             const users = await res.json();
