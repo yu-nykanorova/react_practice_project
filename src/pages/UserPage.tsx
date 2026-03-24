@@ -7,7 +7,7 @@ import {userSliceActions} from "../redux/slices/userSlice/userSlice.ts";
 export const UserPage = () => {
     const {id} = useParams();
 
-    const {user, loadState} = useAppSelector(({userSlice}) => userSlice);
+    const {user, loadState, error} = useAppSelector(({userSlice}) => userSlice);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -18,7 +18,8 @@ export const UserPage = () => {
 
     return (
         <div>
-            {!loadState && <div>Loading</div>}
+            {loadState === "loading" && <div>Loading</div>}
+            {loadState === "failed" && <div>{error}</div>}
             {user && <div>{user.id} - {user.name}</div>}
         </div>
     );

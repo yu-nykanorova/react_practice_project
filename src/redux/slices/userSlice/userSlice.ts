@@ -20,9 +20,11 @@ const loadUsers = createAsyncThunk(
             const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
             if (!res.ok) {
-                return thunkAPI.rejectWithValue("Server error");
+                throw new Error(`Failed to fetch`);
             }
-            return await res.json();
+
+            const users = await res.json();
+            return thunkAPI.fulfillWithValue(users);
         } catch (error: unknown) {
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message);
@@ -38,10 +40,13 @@ const loadUser = createAsyncThunk(
     async (id: string, thunkAPI) => {
         try {
             const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+
             if (!res.ok) {
-                return thunkAPI.rejectWithValue("Server error");
+                throw new Error(`Failed to fetch user`);
             }
-            return await res.json();
+
+            const user = await res.json();
+            return thunkAPI.fulfillWithValue(user);
         } catch (error: unknown) {
             if (error instanceof Error) {
                 return thunkAPI.rejectWithValue(error.message);
@@ -77,7 +82,7 @@ export const userSlice = createSlice({
             })
             .addMatcher(isRejected(loadUser, loadUsers), (state, action) => {
                 state.loadState = "failed";
-                state.error = action.payload as string ?? "Error";
+                state.error = (action.payload as string) || "Error";
             });
     }
 });

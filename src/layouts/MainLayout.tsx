@@ -1,11 +1,13 @@
 import {Outlet} from "react-router-dom";
-import {Menu} from "../components/Menu.tsx";
+import {Header} from "../components/header/Header.tsx";
 
 export const MainLayout = () => {
     return (
-        <>
-            <Menu/>
-            <Outlet/>
-        </>
+        <div className="min-h-screen relative text-stone-900 bg-olive-50">
+            <Header/>
+            <div className="min-h-screen mx-auto pt-30 px-10">
+                <Outlet/>
+            </div>
+        </div>
     );
 };
