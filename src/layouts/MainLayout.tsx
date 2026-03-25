@@ -5,7 +5,7 @@ export const MainLayout = () => {
     return (
         <div className="min-h-screen relative text-stone-900 bg-olive-50">
             <Header/>
-            <div className="min-h-screen mx-auto pt-30 px-10">
+            <div className="min-h-screen max-w-300 mx-auto pt-30 px-10">
                 <Outlet/>
             </div>
         </div>

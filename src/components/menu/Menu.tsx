@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom';
 
 export const Menu = () => {
     const menuItemClass = ({isActive}: {isActive: boolean}) =>
-        `p-1 text-xl ${isActive ? "font-semibold text-lime-600 border-b border-b-lime-600" : ""}`;
+        `p-1 text-xl transition-all duration-200 ${isActive ? "font-semibold text-lime-600 border-b border-b-lime-600" : "hover:text-lime-600"}`;
 
     return (
         <nav className="max-w-300 mx-auto px-10 py-2 flex justify-between items-center">

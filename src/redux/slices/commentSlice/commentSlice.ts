@@ -1,5 +1,7 @@
 import type {IComment} from "../../../models/IComment.ts";
 import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected, type PayloadAction} from "@reduxjs/toolkit";
+import {getError} from "../../../helpers/getError.ts";
+import {getItems} from "../../../services/getItemsService.ts";
 
 type CommentSliceType = {
     comments: IComment[];
@@ -13,19 +15,10 @@ const loadComments = createAsyncThunk(
     "commentSlice/loadComments",
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("https://jsonplaceholder.typicode.com/comments");
-
-            if(!res.ok) {
-                throw new Error("Failed to fetch");
-            }
-
-            const comments = await res.json();
+            const comments = await getItems<IComment[]>("/comments");
             return thunkAPI.fulfillWithValue(comments);
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message);
-            }
-            return thunkAPI.rejectWithValue("Unknown error");
+        } catch (error) {
+            return thunkAPI.rejectWithValue(getError(error));
         }
     }
 )
@@ -53,6 +46,6 @@ export const commentSlice = createSlice({
     }
 });
 
-export const postSliceActions = {
+export const commentSliceActions = {
     ...commentSlice.actions, loadComments
 };

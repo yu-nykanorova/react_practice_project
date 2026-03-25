@@ -1,5 +1,7 @@
 import type {IUser} from "../../../models/IUser.ts";
 import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected, type PayloadAction} from "@reduxjs/toolkit";
+import {getItem, getItems} from "../../../services/getItemsService.ts";
+import {getError} from "../../../helpers/getError.ts";
 
 // опис типу частини стейту, якрю є слайс, це структура даних для userSlice
 type UserSliceType = {
@@ -13,23 +15,15 @@ type UserSliceType = {
 // при першому запуску store буде {users: []}
 const initialState: UserSliceType = {users: [], user: null, loadState: "succeed", error: null};
 
+// createAsyncThunk - синхронний перетворювач
 const loadUsers = createAsyncThunk(
     "userSlice/loadUsers",
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("https://jsonplaceholder.typicode.com/users");
-
-            if (!res.ok) {
-                throw new Error("Failed to fetch");
-            }
-
-            const users = await res.json();
+            const users = await getItems<IUser[]>("/users");
             return thunkAPI.fulfillWithValue(users);
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message);
-            }
-            return thunkAPI.rejectWithValue("Unknown error");
+        } catch (error) {
+            return thunkAPI.rejectWithValue(getError(error));
         }
     }
 );
@@ -39,19 +33,10 @@ const loadUser = createAsyncThunk(
     "userSlice/loadUser",
     async (id: string, thunkAPI) => {
         try {
-            const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-
-            if (!res.ok) {
-                throw new Error(`Failed to fetch user`);
-            }
-
-            const user = await res.json();
+            const user = await getItem<IUser>("/users", id);
             return thunkAPI.fulfillWithValue(user);
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message);
-            }
-            return thunkAPI.rejectWithValue("Unknown error");
+        } catch (error) {
+            return thunkAPI.rejectWithValue(getError(error));
         }
     }
 );

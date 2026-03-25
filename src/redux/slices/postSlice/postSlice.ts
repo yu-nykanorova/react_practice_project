@@ -1,5 +1,7 @@
 import type {IPost} from "../../../models/IPost.ts";
 import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected, type PayloadAction} from "@reduxjs/toolkit";
+import {getItems} from "../../../services/getItemsService.ts";
+import {getError} from "../../../helpers/getError.ts";
 
 type PostSliceType = {
     posts: IPost[];
@@ -13,19 +15,10 @@ const loadPosts = createAsyncThunk(
     "postSlice/loadPosts",
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-
-            if(!res.ok) {
-                throw new Error("Failed to fetch");
-            }
-
-            const posts = await res.json();
+            const posts = await getItems<IPost[]>("/posts");
             return thunkAPI.fulfillWithValue(posts);
-        } catch (error: unknown) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message);
-            }
-            return thunkAPI.rejectWithValue("Unknown error");
+        } catch (error) {
+            return thunkAPI.rejectWithValue(getError(error));
         }
     }
 )
