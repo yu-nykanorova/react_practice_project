@@ -27,12 +27,14 @@ export const UserItem = () => {
                     <div className="max-w-70 flex items-center justify-center rounded-md shadow-md">
                         <img className="rounded-md" src={avatar} alt={`${user.name}'s avatar`}/>
                     </div>
-                    <div><p className="text-[20px] text-right">USER #{user.id}</p>
+                    <div>
+                        <p className="text-[20px] text-right">USER #{user.id}</p>
                         <h2 className="px-2 font-semibold text-[28px] text-yellow-600">{user.name}</h2>
                         <h3 className="px-2 text-[20px] self-center">({user.username})</h3>
                         <p className="w-full mt-1 px-2 text-[18px] font-semibold">Contacts:</p>
                         <p className="w-full px-2">Email: {user.email}</p>
-                        <p className="w-full mb-1 px-2">Phone: {user.phone}</p></div>
+                        <p className="w-full mb-1 px-2">Phone: {user.phone}</p>
+                    </div>
                 </div>
             }
 

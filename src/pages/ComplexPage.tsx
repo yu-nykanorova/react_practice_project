@@ -13,8 +13,8 @@ export const ComplexPage = () => {
     const dispatch = useAppDispatch();
 
     const {users, loadState: userLoadState, error: userError} = useAppSelector(({userSlice}) => userSlice);
-    const {posts, loadState: postLoadState, error: postError} = useAppSelector(({postSlice}) => postSlice);
-    const {comments, loadState: commentLoadState, error: commentError} = useAppSelector(({commentSlice}) => commentSlice);
+    const {posts} = useAppSelector(({postSlice}) => postSlice);
+    const {comments} = useAppSelector(({commentSlice}) => commentSlice);
 
     useEffect(() => {
         if (!users.length) {
@@ -34,24 +34,38 @@ export const ComplexPage = () => {
             : [],
     [selectedUser, posts]);
 
-    const userPostsComments = useMemo(() =>
-            selectedUser ?
-                comments.filter(comment => userPosts.some(post => post.id === comment.postId))
-                : [],
-        [selectedUser, userPosts, comments]);
+    const handleUserClick = (user: IUser) => {
+        setSelectedUser(user);
+    };
 
     return (
         <>
             <div>
                 {userLoadState === "loading" && <p className="text-[24px] text-yellow-600">Loading...</p>}
                 {userLoadState === "failed" && <p className="text-[20px] text-red-600">{userError}</p>}
-                <ul>
+                <h1 className="mb-4 text-[26px]">Click any user to show details</h1>
+                <ul className="px-10 py-6 max-w-300 mx-auto grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-4 border-y border-lime-600">
                     {
                         users.map((user) => (
-                            <p key={user.id}>{user.name}</p>
+                            <li
+                                key={user.id}
+                                className={`p-1 flex justify-center items-center text-[20px] shadow-md rounded-md cursor-pointer transition-all duration-200 hover:bg-lime-600 hover:text-white ${user.id === selectedUser?.id ? "bg-lime-600 text-white": "bg-white text-[initial]"}`}
+                                onClick={() => handleUserClick(user)}
+                            >
+                                {user.name}
+                            </li>
                         ))
                     }
                 </ul>
+                {
+                    selectedUser && (
+                        <UserItemComplex
+                            user={selectedUser}
+                            posts={userPosts}
+                            comments={comments}
+                        />
+                    )
+                }
             </div>
         </>
     );
