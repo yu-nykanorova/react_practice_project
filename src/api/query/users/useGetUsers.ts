@@ -1,4 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
+import {get} from "../../use-api.ts";
 
 interface User {
     id: string;
@@ -8,9 +9,6 @@ interface User {
 export const useGetUsers = () => {
     return useQuery({
         queryKey: ["users"],
-        queryFn: async (): Promise<User[]> => {
-            const response = await fetch("https://jsonplaceholder.typicode.com/users");
-            return await response.json();
-        }
+        queryFn: () => get<User[]>("users"),
     });
 };
