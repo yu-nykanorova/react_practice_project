@@ -16,5 +16,7 @@ export const useGetPaginatedPosts = ({limit, offset}: {limit: number, offset: nu
             return get(`posts?_start=${offset}&_limit=${limit}`);
         },
         placeholderData: keepPreviousData,
+        networkMode: "always", // стратегія запиту
+        // refetchInterval: 2000, // polling, повторні запити через вказаний час
     });
 };

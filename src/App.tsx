@@ -1,28 +1,31 @@
 import './App.css'
-import {Fragment, useState} from "react";
+import {Fragment, useCallback} from "react";
 import {useGetPaginatedPosts} from "./api/query/posts/useGetPaginatedPosts.ts";
+import {useCreatePost} from "./api/mutations/posts/useCreatePost.ts";
 
-const DEFAULT_LIMIT = 10;
-const TOTAL_PAGES = 10;
+const DEFAULT_LIMIT = 5;
 
 function App() {
-    const [pagination, setPagination] = useState<{limit: number; offset: number}>({
-        limit: DEFAULT_LIMIT,
-        offset: 0,
-    });
 
     const {
         isFetching: isPaginatedPostFetching,
         refetch,
         data: paginatedPosts,
-    } = useGetPaginatedPosts(pagination);
+    } = useGetPaginatedPosts({
+        limit: DEFAULT_LIMIT,
+        offset: 0,
+    });
 
-    console.log(paginatedPosts);
+    const {mutateAsync: createPostRequest} = useCreatePost();
 
-    const handleChangePage = async (offset: number) => {
-        setPagination(prevState => ({...prevState, offset}));
-        await refetch();
-    };
+    const handleCreatePost = useCallback(async () => {
+        return await createPostRequest({
+            title: "Title test",
+            body: "Body test",
+            userId: "1"
+        });
+
+    }, [createPostRequest, refetch])
 
     if (isPaginatedPostFetching) return <div>Loading...</div>;
 
@@ -42,21 +45,7 @@ function App() {
                     </Fragment>
                 ))
             }
-            <div className="flex items-center justify-between w-full">
-                <button className="px-2 py-1 text-[20px] text-white bg-lime-700 rounded-md disabled:bg-slate-400" onClick={() => handleChangePage(0)} disabled={pagination.offset === 0}>
-                    First
-                </button>
-                <button className="px-2 py-1 text-[20px] text-white bg-lime-700 rounded-md disabled:bg-slate-400" onClick={() => handleChangePage(pagination.offset - pagination.limit)} disabled={pagination.offset === 0}>
-                    Prev
-                </button>
-                <span>Page {pagination.offset / pagination.limit + 1}</span>
-                <button className="px-2 py-1 text-[20px] text-white bg-lime-700 rounded-md disabled:bg-slate-400" onClick={() => handleChangePage(pagination.offset + pagination.limit)} disabled={pagination.offset === (TOTAL_PAGES - 1) * pagination.limit}>
-                    Next
-                </button>
-                <button className="px-2 py-1 text-[20px] text-white bg-lime-700 rounded-md disabled:bg-slate-400" onClick={() => handleChangePage((TOTAL_PAGES - 1) * pagination.limit)} disabled={pagination.offset === (TOTAL_PAGES - 1) * pagination.limit}>
-                    Last
-                </button>
-            </div>
+            <button onClick={handleCreatePost} className="mt-2 p-2 bg-indigo-500 text-white rounded-md">Create new post</button>
         </div>
     </div>
   );
